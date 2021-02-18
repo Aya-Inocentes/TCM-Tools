@@ -30,7 +30,7 @@ jobs:
       env:
         ORG_NAME: ${{ github.event.inputs.organization_name }}
         REPO_NAME: ${{ github.event.inputs.repository_name }}
-        GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_MIGRATION_TOKEN }}
         SCOPE: ${{ github.event.inputs.repository_scope }}
     - name: Clone Existing
       run: |
