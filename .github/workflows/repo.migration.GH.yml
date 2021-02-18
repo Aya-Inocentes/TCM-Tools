@@ -1,0 +1,57 @@
+# This is a basic workflow that is manually triggered
+name: TCM.Tools.Migration.GH
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      organization_name:
+        description: 'Organization:'
+        default: 'goodyear'
+        required: true
+      repository_name:
+        description: 'New Repository Name:'
+        required: true
+      repository_scope:
+        description: 'Scope: (public, private, or internal)'
+        # Default value if no value is explicitly provided
+        default: 'private'
+        required: true
+      existing_repo_url:
+        description: 'Existing Repository URL:'
+        required: true
+jobs:
+  Migration:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create New Repository
+      run: gh repo create $ORG_NAME/$REPO_NAME --$SCOPE --confirm
+      env:
+        ORG_NAME: ${{ github.event.inputs.organization_name }}
+        REPO_NAME: ${{ github.event.inputs.repository_name }}
+        GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
+        SCOPE: ${{ github.event.inputs.repository_scope }}
+    - name: Clone Existing
+      run: |
+        #echo "git@github.com:$ORG_NAME/$REPO_NAME.git"
+        
+        git config --global user.email "bassaniojr._saba@goodyear.com"
+        git config --global user.name "Bvxzee"
+        
+        git clone --mirror ${{ github.event.inputs.existing_repo_url }}
+        cd "${{ github.event.inputs.repository_name }}"
+        
+        git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
+        
+        #git remote add existing ${{ github.event.inputs.existing_repo_url }}
+        
+        #echo "# TR-Migration-0001. Initial commit via TCM.Tools.Repository.Migration." >> README.md
+        #git add README.md
+        
+        #git commit -m "Initial commit via TCM.Tools.Repository.Migration."
+        #git push --mirror new existing
+        
+      env:
+        ORG_NAME: ${{ github.event.inputs.organization_name }}
+        REPO_NAME: ${{ github.event.inputs.repository_name }}
