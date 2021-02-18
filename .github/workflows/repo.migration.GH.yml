@@ -23,7 +23,7 @@ on:
         required: true
 jobs:
   Migration:
-    runs-on: ubuntu-latest
+    runs-on: gisvms70
     steps:
     - name: Create New Repository
       run: gh repo create $ORG_NAME/$REPO_NAME --$SCOPE --confirm
@@ -37,7 +37,7 @@ jobs:
         #echo "git@github.com:$ORG_NAME/$REPO_NAME.git"
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
-        git config --global user.name "Bvxzee"
+        git config --global user.name "TCM.Migration"
         
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
         cd "${{ github.event.inputs.repository_name }}"
