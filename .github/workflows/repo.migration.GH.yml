@@ -41,11 +41,7 @@ jobs:
         # Install Dependencies
         # JQ
         
-        #lsb_release -a
-        
-        zypper install jq
-        
-        rpm --help
+        sudo zypper install jq
         
         # sudo 
         #apt-get update
