@@ -42,11 +42,13 @@ jobs:
         # JQ
         
         # sudo 
-        apt-get update
+        #apt-get update
+        sudo yum -y update
         
         echo "Installing JQ"
         #sudo 
-        apt-get install jq
+        #apt-get install jq
+        sudo yum install jq
         
         # GH
         echo "Installing GH"
