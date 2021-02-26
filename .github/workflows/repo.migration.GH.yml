@@ -41,6 +41,9 @@ jobs:
         # Install Dependencies
         # JQ
         
+        lsb_release -a
+        uname -a
+        
         # sudo 
         #apt-get update
         yum -y update
