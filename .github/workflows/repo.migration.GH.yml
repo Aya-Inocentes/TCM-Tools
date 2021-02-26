@@ -44,14 +44,16 @@ jobs:
         #lsb_release -a
         uname -a
         
+        dnf install jq
+        
         # sudo 
         #apt-get update
-        yum -y update
+        #yum -y update
         
         echo "Installing JQ"
         #sudo 
         #apt-get install jq
-        yum install jq
+        #yum install jq
         
         # GH
         echo "Installing GH"
