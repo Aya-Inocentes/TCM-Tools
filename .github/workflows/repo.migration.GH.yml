@@ -27,13 +27,26 @@ jobs:
     steps:
     - name: Install Dependencies
       run: |
+        # Check Workspace Directory
+        
+        DIRECTORY="GH-Workspace"
+        
+        if [ ! -d "$DIRECTORY" ]; then
+          # Control will enter here if $DIRECTORY doesn't exist.
+          mkdir $DIRECTORY
+        fi
+        
+        cd $DIRECTORY
+        
         # Install Dependencies
         # JQ
         
-        sudo apt-get update
+        # sudo 
+        apt-get update
         
         echo "Installing JQ"
-        sudo apt-get install jq
+        #sudo 
+        apt-get install jq
         
         # GH
         echo "Installing GH"
@@ -47,7 +60,7 @@ jobs:
         curl -sSL https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.tar.gz -o gh_${VERSION}_linux_amd64.tar.gz
         
         # Verify
-        gh version
+        #gh version
     - name: Create New Repository
       run: gh repo create $ORG_NAME/$REPO_NAME --$SCOPE --confirm
       env:
