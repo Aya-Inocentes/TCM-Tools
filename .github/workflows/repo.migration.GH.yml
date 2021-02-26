@@ -37,14 +37,15 @@ jobs:
         fi
         
         cd $DIRECTORY
-        
+        uname -a
         # Install Dependencies
         # JQ
         
         #lsb_release -a
-        uname -a
         
-        dnf install jq
+        zypper install jq
+        
+        rpm --help
         
         # sudo 
         #apt-get update
