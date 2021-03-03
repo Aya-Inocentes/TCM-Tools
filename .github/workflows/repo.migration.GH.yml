@@ -35,13 +35,15 @@ jobs:
         SCOPE: ${{ github.event.inputs.repository_scope }}
     - name: Clone Existing
       run: |
-        #echo "git@github.com:$ORG_NAME/$REPO_NAME.git"
+        echo "git@github.com:$ORG_NAME/$REPO_NAME.git"
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
-        git config --global user.name "TCM.Migration"
+        git config --global user.name "Bassi Saba"
         
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
         cd "${{ github.event.inputs.repository_name }}"
+        
+        ls -la
         
         git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
         
