@@ -21,6 +21,9 @@ on:
       existing_repo_url:
         description: 'Existing Repository URL:'
         required: true
+      existing_repo_name:
+        description: 'Existing Repository Name:'
+        required: true
 jobs:
   Migration:
     runs-on: gisvms70
@@ -43,7 +46,7 @@ jobs:
         ssh -Tv git@gitlab.gis.goodyear.com
 
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
-        cd "${{ github.event.inputs.repository_name }}"
+        cd "${{ github.event.inputs.existing_repo_name }}"
         
         
         git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
