@@ -42,8 +42,6 @@ jobs:
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
         git config --global user.name "Bassi Saba"
-        
-        ssh -Tv git@gitlab.gis.goodyear.com
 
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
         cd "${{ github.event.inputs.existing_repo_name }}"
