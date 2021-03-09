@@ -52,6 +52,7 @@ jobs:
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
         cd "${{ github.event.inputs.existing_repo_name }}.git"
         
+        ls -la
         
         git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
         
