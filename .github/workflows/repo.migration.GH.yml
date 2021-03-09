@@ -43,6 +43,7 @@ jobs:
         echo "[DEBUG] ${{ github.event.inputs.existing_repo_name }}.git"
         
         ls -la
+        ssh -Tv git@gitlab.gis.goodyear.com
         
         rm -f -r "${{ github.event.inputs.existing_repo_name }}.git"
         
