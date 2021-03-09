@@ -40,12 +40,13 @@ jobs:
       run: |
         echo "git@github.com:$ORG_NAME/$REPO_NAME.git"
         echo ${{ github.event.inputs.existing_repo_url }}
+        echo "${{ github.event.inputs.existing_repo_name }}.git"
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
         git config --global user.name "Bassi Saba"
 
         git clone --mirror ${{ github.event.inputs.existing_repo_url }}
-        cd "${{ github.event.inputs.existing_repo_name }}"
+        cd "${{ github.event.inputs.existing_repo_name }}.git"
         
         
         git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
