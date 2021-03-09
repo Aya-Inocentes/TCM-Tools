@@ -44,7 +44,7 @@ jobs:
         
         ls -la
         
-        rm -r "${{ github.event.inputs.existing_repo_name }}.git"
+        rm -f -r "${{ github.event.inputs.existing_repo_name }}.git"
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
         git config --global user.name "Bassi Saba"
