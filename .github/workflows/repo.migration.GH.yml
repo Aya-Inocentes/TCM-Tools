@@ -49,15 +49,18 @@ jobs:
         
         git config --global user.email "bassaniojr._saba@goodyear.com"
         git config --global user.name "Bassi Saba"
+        
+        GIT_SSH_COMMAND='ssh -i /u/gisdm05/lda5148/.ssh/id_ed25519' git clone --mirror ${{ github.event.inputs.existing_repo_url }}
 
-        git clone --mirror ${{ github.event.inputs.existing_repo_url }}
+        #git clone --mirror ${{ github.event.inputs.existing_repo_url }}
         cd "${{ github.event.inputs.existing_repo_name }}.git"
         
-        ls -la
+        #ls -la
         
-        ssh -Tv git@github.com
-        git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
+        #ssh -Tv git@github.com
+        #git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
         
+        GIT_SSH_COMMAND='ssh -i /u/gisdm05/lda5148/.ssh/id_ed25519' git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
       env:
         ORG_NAME: ${{ github.event.inputs.organization_name }}
         REPO_NAME: ${{ github.event.inputs.repository_name }}
