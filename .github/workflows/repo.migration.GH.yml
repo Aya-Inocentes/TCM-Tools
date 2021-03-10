@@ -42,8 +42,8 @@ jobs:
         echo "[DEBUG] ${{ github.event.inputs.existing_repo_url }}"
         echo "[DEBUG] ${{ github.event.inputs.existing_repo_name }}.git"
         
-        ls -la
-        ssh -Tv git@gitlab.gis.goodyear.com
+        #ls -la
+        #ssh -Tv git@gitlab.gis.goodyear.com
         
         rm -f -r "${{ github.event.inputs.existing_repo_name }}.git"
         
@@ -55,15 +55,8 @@ jobs:
         
         ls -la
         
+        ssh -Tv git@github.com
         git push --no-verify --mirror git@github.com:$ORG_NAME/$REPO_NAME.git
-        
-        #git remote add existing ${{ github.event.inputs.existing_repo_url }}
-        
-        #echo "# TR-Migration-0001. Initial commit via TCM.Tools.Repository.Migration." >> README.md
-        #git add README.md
-        
-        #git commit -m "Initial commit via TCM.Tools.Repository.Migration."
-        #git push --mirror new existing
         
       env:
         ORG_NAME: ${{ github.event.inputs.organization_name }}
